@@ -1,0 +1,29 @@
+.head {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.container {
+  display: grid;
+  width: 200px;
+  height: 200px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin: 30px auto;
+
+  > div {
+    text-align: center;
+    line-height: 40px;
+    border: 1px solid #333;
+
+    &.active {
+      background: peachpuff;
+    }
+
+    &.bingo {
+      background: yellowgreen;
+    }
+  }
+}
