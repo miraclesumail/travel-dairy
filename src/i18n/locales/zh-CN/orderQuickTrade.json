@@ -1,0 +1,18 @@
+{
+  "sell": "卖",
+  "buy": "买",
+  "status": "状态",
+  "date": "日期",
+  "type-date": "类型 / 日期",
+  "order-id": "订单编号",
+  "price": "价格",
+  "quantity": "数量",
+  "amount": "金额",
+  "buy-crypto": "购买 {{crypto}}",
+  "sell-crypto": "出售 {{crypto}}",
+  "status-all": "全部",
+  "status-unpaid": "未付款",
+  "status-completed": "已完成",
+  "status-refund": "已退款",
+  "status-cancel": "已取消"
+}

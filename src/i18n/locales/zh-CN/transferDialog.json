@@ -1,0 +1,13 @@
+{
+  "title": "划转",
+  "confirm": "确认",
+  "cancel": "取消",
+  "amount": "金额",
+  "all": "全部",
+  "availAmount": "可用 {{n}}",
+  "funding": "资金",
+  "trading": "交易",
+  "commission": "佣金",
+  "insufficientBalance": "余额不足",
+  "success": "划转成功"
+}

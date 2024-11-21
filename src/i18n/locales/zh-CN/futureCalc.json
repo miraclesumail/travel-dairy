@@ -1,0 +1,16 @@
+{
+  "pnl": "收益",
+  "liq-price": "强平价格",
+  "exit-price": "平仓价格",
+  "long": "多",
+  "short": "空",
+  "entry-price": "开仓价格",
+  "open-margin": "开仓保证金",
+  "calculate": "计算",
+  "total-crypto": "仓位数量",
+  "pnl-rate": "收益率",
+  "open-fee": "开仓手续费",
+  "close-fee": "平仓手续费",
+  "add-margin": "增加保证金",
+  "clac-hint": "计算结果仅供参考"
+}

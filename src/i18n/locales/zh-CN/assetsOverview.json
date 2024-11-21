@@ -1,0 +1,10 @@
+{
+  "assets-overview": "资产总览",
+  "balance": "余额（{{unit}}）",
+  "avail": "可用（{{unit}}）",
+  "freeze": "冻结（{{unit}}）",
+  "size": "委托 & 仓位数量",
+  "pnl": "盈亏 ({{unit}})",
+  "deposit": "充币",
+  "transfer": "划转"
+}

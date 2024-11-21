@@ -1,0 +1,12 @@
+
+
+.task.dragging {
+  cursor: default;
+  box-shadow: none;
+  background: var(--secondary-color);
+  opacity: 0.5;
+}
+
+.task.dragging * {
+  visibility: hidden;
+}

@@ -1,0 +1,10 @@
+{
+  "error-upload-size-toast": "图像超过限制",
+  "error-upload-dimension-toast": "不正确的图像尺寸",
+  "upload-preview-img-alt": "您想上传的图像",
+  "remove-img": "删除图像",
+  "delete-dialog-content": "您要删除此文件吗？",
+  "delete": "删除",
+  "upload": "上传",
+  "confirm-delete-file-msg": "您要删除此文件吗？"
+}

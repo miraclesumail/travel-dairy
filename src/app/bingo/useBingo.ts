@@ -2,7 +2,7 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-09-01 01:39:25
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2024-09-02 02:17:51
+ * @LastEditTime: 2024-09-26 23:25:21
  * @FilePath: /nextjs/travel-dairy/src/app/bingo/useBingo.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -35,8 +35,6 @@ function isChild(parent: any[], chArr: any[]) {
 function getBingoArrs(cardArrs: any[]) {
   const line = Math.sqrt(cardArrs.length);
 
-  const total = line * 2 + 2;
-
   const bingoArrs = [];
 
   for (let i = 0; i < line * 2; i++) {
@@ -67,6 +65,7 @@ export default function useBingo(total: number) {
   const [cardPool, setCardPool] = useState<any[]>([]);
   const [bingoArrs, setBingoArrs] = useState<any[]>([]);
   const [gameStatistic, setGameStatistic] = useState<any[]>([]);
+  const [gameAxisArrs, setGameAxisArrs] = useState<any[]>([]);
   const [round, setRound] = useState<number>(1);
 
   const timer = useRef<any>(null);
@@ -98,7 +97,7 @@ export default function useBingo(total: number) {
         setBasket((prev: any[]) => prev.concat(target));
         return prev;
       });
-    }, 3 * 1000);
+    }, 2 * 1000);
   };
 
   useEffect(() => {
@@ -132,6 +131,18 @@ export default function useBingo(total: number) {
     }
   }, [basket, isBingo]);
 
+  useEffect(() => {
+    if (!!nowBingoArrs && Array.isArray(nowBingoArrs)) {
+      const currentAxisArr = nowBingoArrs
+        .map((bingoArr) => cardArrs.indexOf(bingoArr))
+        .map((bingoArr) => ({
+          x: bingoArr % Math.sqrt(total),
+          y: Math.floor(bingoArr / Math.sqrt(total)),
+        }));
+      setGameAxisArrs((prev) => ([...prev, currentAxisArr]));
+    }
+  }, [nowBingoArrs, cardArrs]);
+
   return {
     cardArrs,
     cardPool,
@@ -140,6 +151,7 @@ export default function useBingo(total: number) {
     bingoArrs,
     nowBingoArrs,
     gameStatistic,
+    gameAxisArrs,
     isBingo,
   };
 }

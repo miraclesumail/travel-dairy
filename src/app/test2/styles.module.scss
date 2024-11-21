@@ -1,0 +1,36 @@
+.wrapper {
+  background: conic-gradient(red 30deg, pink 30deg 86deg, chocolate 86deg 110deg, blue 110deg 200deg, purple 200deg);
+}
+
+.animated {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: chocolate;
+  left: -100px;
+  top: 1px;
+  animation: move 5s linear infinite;
+  
+}
+
+.animated1 {
+  animation-delay: -1s;
+}
+
+.animated2 {
+  animation-delay: -2s;
+}
+
+.animated3 {
+  animation-delay: -3s;
+}
+
+.animated4 {
+  animation-delay: -4s;
+}
+
+@keyframes move {
+  from {
+    left: 500px;
+  }
+}

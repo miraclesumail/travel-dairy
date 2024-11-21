@@ -1,0 +1,14 @@
+{
+  "desc": "Top.one 合约是一种提供USDT保证金期货的加密货币衍生产品。 U本位永续合约以USDT报价，并使用USDT作为保证金。收益也将以USDT计算。 对于USDT本位保证金期货，有USDT本位永续合约提供24/7服务。永续合约没有交割，可以长期持有",
+  "perpetual": "永续合约",
+  "symbol": "币种",
+  "last-price": "最新价格",
+  "24h-high": "24h 最高",
+  "24h-low": "24h 最低",
+  "open-interest": "持仓量",
+  "24h-vol": "24h 交易量",
+  "24h-turnover": "24h 成交额",
+  "24h-change": "24h 涨跌",
+  "action": "操作",
+  "trade": "交易"
+}

@@ -2,7 +2,7 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-07-02 16:10:47
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2024-07-15 16:04:40
+ * @LastEditTime: 2024-11-01 16:46:07
  * @FilePath: /nextjs/travel-dairy/src/app/layout.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%
  */
@@ -10,15 +10,23 @@
 
 import type { Metadata } from 'next';
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { Inter } from 'next/font/google';
+import { Inter, Source_Sans_3, Roboto, Aleo} from 'next/font/google';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from '@/store';
 import { increment } from '@/store/reducers/counter.slice';
 import { useAppDispatch } from '@/store/hooks';
 import './globals.css';
+import { useEffect, useState } from 'react';
 
 const inter = Inter({ subsets: ['latin'] });
+const aleo = Aleo({ subsets: ['vietnamese'] });
+const SOURCE = Source_Sans_3({ weight: '400', subsets: ['cyrillic']});
+
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -40,17 +48,21 @@ export default function RootLayout({
   const segment = useSelectedLayoutSegment();
   const navSegment = useSelectedLayoutSegment('sidemenu');
 
-  console.log(navSegment, 'segment');
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang='en'>
+      <body className={aleo.className}>
+        {/* {mounted ? ( */}
         <Provider store={store}>
-          <PersistGate persistor={persistor} loading={null}>
+          <PersistGate persistor={persistor} loading={<div>ddd</div>}>
             {navbar}
             {children}
             {sidemenu}
           </PersistGate>
         </Provider>
+        {/* ) : <div>ddd</div>} */}
       </body>
     </html>
   );

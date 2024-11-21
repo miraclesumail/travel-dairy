@@ -1,0 +1,17 @@
+{
+  "long": "做多 {{n}}.00x",
+  "short": "做空 {{n}}.00x",
+  "PNL": "PNL%",
+  "entryPrice": "开仓价格",
+  "exitPrice": "平仓价格",
+  "markPrice": "标记价格",
+  "referralCode": "邀请码",
+  "referralTips": "通过我们的二维码注册以启动您的加密旅程",
+  "copied": "已复制到剪贴板",
+  "showPNL": "显示盈亏金额",
+  "copyLink": "复制链接",
+  "saveAsPng": "保存为PNG",
+  "tradeNow": "马上交易",
+  "tradeNowTitle": "高达 1,000 倍的杠杆",
+  "tradeNowTips": "低滑点的永续合约交易"
+}

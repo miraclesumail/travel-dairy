@@ -1,0 +1,17 @@
+{
+  "biometrics": "生物辨识",
+  "name": "姓名",
+  "added": "新增",
+  "last-used": "最近使用",
+  "action": "操作",
+  "delete": "删除",
+  "edit": "编辑",
+  "edit-success": "编辑成功",
+  "rename-title": "重新命名验证器",
+  "rename-dec": "请输入有2〜20个字符的英语和中文数字，不含空白符号。",
+  "biometrics-label": "生物识别/安全密钥标签",
+  "enter-name": "输入姓名",
+  "save": "保存",
+  "delete-success": "成功删除",
+  "no-record-found": "没有找到记录"
+}

@@ -1,0 +1,18 @@
+{
+  "clear": "清除",
+  "email-code": "电子邮箱验证码",
+  "enter-code": "输入验证码",
+  "send-code": "发送验证码",
+  "send": "发送",
+  "get": "获取",
+  "resend": "重新发送",
+  "sent-success": "发送成功",
+  "mobile-num": "手机号码",
+  "search": "搜索",
+  "pwd-empty-error-msg": "请输入您的密码",
+  "error-pwd-length": "6-20个字符密码",
+  "error-least-number-alphabet": "至少1个英文字母和数字",
+  "error-no-space": "支持符号，不支持空白",
+  "error-password-required": "请输入您的密码",
+  "filter": "过滤"
+}

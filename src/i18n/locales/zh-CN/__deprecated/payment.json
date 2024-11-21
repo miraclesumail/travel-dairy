@@ -1,0 +1,12 @@
+{
+  "payment": "付款",
+  "buy-crypto": "购买加密货币",
+  "no-payment": "尚无收付信息",
+  "add-payment-method": "添加收付方式",
+  "edit": "编辑",
+  "delete": "删除",
+  "delete-hint": "您确定要删除此收付方式吗？",
+  "delete-success": "删除成功",
+  "warning-ads-exist": "如果要编辑此收付，请关闭相关广告。",
+  "view-my-ads": "查看我的广告"
+}

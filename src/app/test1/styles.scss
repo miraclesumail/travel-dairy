@@ -1,0 +1,21 @@
+@use 'sass:math';
+
+$width: 100px;
+
+html {
+  font-size: calc(30px + (192 - 30) * (100vw - 300px) / (1920 - 300));
+}
+
+:root {
+  --fontSize: calc(20px + (36 - 20) * (100vw - 768px) / (1920 - 768));
+}
+
+@function size($size) {
+  @return math.div($size, 192) * 1rem;
+}
+
+.testFont {
+  width: size(500);
+  height: size(500);
+  background: forestgreen;
+}

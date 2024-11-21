@@ -1,0 +1,14 @@
+{
+  "add-payment-method": "新增付款方式",
+  "payment": "付款",
+  "tip": "提示：\n 在交易期间，将向买方显示付款方式，以接受法币转帐。请确保信息正确，真实。",
+  "cancel": "取消",
+  "confirm": "确认",
+  "confirm-exit": "确认离开？",
+  "cancel-reminder": "您的变更将不会保存",
+  "not-now": "现在不要",
+  "exit": "离开",
+  "added-successfully": "新增成功",
+  "edited-successfully": "编辑成功",
+  "upload-size-hint": "限制2M以下"
+}

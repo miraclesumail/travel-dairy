@@ -27,3 +27,13 @@
     }
   }
 }
+
+.gameStatistic {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .left {
+    margin-right: 20px;
+  }
+}
