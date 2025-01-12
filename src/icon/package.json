@@ -1,0 +1,12 @@
+{
+  "name": "@cnx/icon",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./output/icon.json"
+  },
+  "devDependencies": {
+    "@iconify/tools": "^4.0.4"
+  }
+}

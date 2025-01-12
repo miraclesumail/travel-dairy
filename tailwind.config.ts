@@ -2,12 +2,16 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-07-02 16:10:47
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2024-11-18 18:29:13
+ * @LastEditTime: 2025-01-13 02:20:53
  * @FilePath: /nextjs/travel-dairy/tailwind.config.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import type { Config } from 'tailwindcss';
-import { addIconSelectors } from '@iconify/tailwind';
+import { addIconSelectors, addDynamicIconSelectors } from '@iconify/tailwind';
+import iconJson from './src/icon/output/icon.json'
+
+import {nextui} from "@nextui-org/react";
+
 
 const config: Config = {
   darkMode: ['class'],
@@ -16,6 +20,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
     './src/**/*.{js,ts,jsx,tsx,mdx}',
+     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -98,6 +103,12 @@ const config: Config = {
   plugins: [
     require('tailwindcss-animate'),
     addIconSelectors(['mdi', 'mdi-light', 'ic']),
+    nextui(),
+    addDynamicIconSelectors({
+      iconSets: {
+        cnx: iconJson,
+      },
+    }),
     // function ({ addVariant }:any) {
     //   addVariant('child', '& > *');
     //   addVariant('child-hover', '& > *:hover');

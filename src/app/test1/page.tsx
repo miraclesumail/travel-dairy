@@ -2,7 +2,7 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-09-11 15:01:53
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2024-11-21 15:25:12
+ * @LastEditTime: 2024-12-13 22:00:11
  * @FilePath: /nextjs/travel-dairy/src/app/test1/page.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -16,6 +16,7 @@ import './styles.scss';
 import Image from 'next/image';
 import { useTeststore } from '@/app/test1/store';
 import { useT } from '@/i18n'
+import { Link as LinkA, Button as BaseButton, extendVariants} from '@nextui-org/react'
 
 interface FormElements extends HTMLFormControlsCollection {
   age: HTMLInputElement;
@@ -29,6 +30,24 @@ const options: IntersectionObserverInit = {
   rootMargin: '0px',
   threshold: 1,
 };
+
+type Parent = {
+  name: string;
+  age: number;
+  what: number;
+}
+
+type Person = {
+  name: string;
+  jj:number;
+}
+
+type Props = Omit<Parent, keyof Person> 
+
+const data = ['hello', 'world'] as const;
+type Greeting = typeof data[number];
+
+const b: Greeting = 'hello'
 
 const Page = () => {
   const [mounted, setMounted] = useState(false);
@@ -78,6 +97,8 @@ const Page = () => {
         ssss {age} {t('topone-product-to-provide')}
       </div>
       <Link href='/test2'>go test 2 </Link>
+      <Link href='/test2'>go test 2HHH </Link>
+      <BaseButton variant='solid'/>
 
       <Image
         src={require('./i/18rmb.png')}
@@ -91,6 +112,7 @@ const Page = () => {
         style={{ width: '100%' }}
         sizes='50vw'
         src='https://placehold.co/3200x800/png'
+        alt=''
         srcSet={
           'https://placehold.co/800x200/png   800w,https://placehold.co/1600x400/png 1600w,https://placehold.co/3200x800/png 3200w'
         }
