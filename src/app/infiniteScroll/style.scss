@@ -1,0 +1,26 @@
+.infinite-container {
+  height: 100vh; /* 占满整个父容器高度 */
+  overflow: auto; /* 允许滚动 */
+  position: relative; /* 使内部元素可以相对于它定位 */
+}
+
+.infinite-list-phantom {
+  position: absolute; /* 绝对定位 */
+  left: 0;
+  right: 0; /* 宽度充满整个容器 */
+  top: 0; /* 顶部对齐 */
+  z-index: -1; /* 放在底层 */
+}
+
+.infinite-list {
+  position: absolute; /* 绝对定位 */
+  left: 0;
+  right: 0; /* 宽度充满整个容器 */
+  top: 0; /* 顶部对齐 */
+  text-align: center; /* 文本居中 */
+}
+
+.infinite-item {
+  border-bottom: 1px solid #eee; /* 分隔线 */
+  box-sizing: border-box; /* 包含边框和内边距 */
+}

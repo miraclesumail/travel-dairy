@@ -2,16 +2,79 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-07-07 22:48:06
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2025-01-12 16:57:15
+ * @LastEditTime: 2025-03-11 17:22:00
  * @FilePath: /nextjs/travel-dairy/src/app/singers/page.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 // @ts-nocheck
 'use client';
 
-import { useEffect, useState } from 'react';
-import excel, { Workbook } from 'exceljs';
-import { SHA256, lib } from 'crypto-js';
+import { ChangeEvent, useEffect, useState } from 'react';
+import excel from 'exceljs';
+import { groupBy, compact, isEmpty } from 'lodash';
+
+const fileToBuffer = (file: File): Promise<Buffer> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const arrayBuffer = event.target?.result;
+      if (arrayBuffer instanceof ArrayBuffer) {
+        resolve(Buffer.from(arrayBuffer));
+      } else {
+        reject(new Error('Could not convert file to buffer'));
+      }
+    };
+    reader.onerror = (error) => reject(error);
+    reader.readAsArrayBuffer(file);
+  });
+
+function sheetToJson({ sheet, headerRowNumber = 1 }) {
+  let headerRow = sheet?.getRow(headerRowNumber);
+  headerRow = headerRow._cells.map((cell) => {
+    let header = cell.value;
+    return {
+      column: cell._column._number,
+      address: cell.address,
+      value: header,
+    };
+  });
+
+  let headers = {};
+  headerRow.forEach((row) => {
+    headers[row.column] = row.value;
+  });
+
+  let rows = sheet._rows.map((row) => {
+    return row._cells.map((cell) => {
+      return {
+        column: cell._column._number,
+        cell: cell.address,
+        value: cell.value,
+      };
+    });
+  });
+  rows = rows.slice(headerRowNumber).map((row) => {
+    let data = [];
+    if (isEmpty(compact(row.map((cell) => cell.value)))) return null;
+
+    row.forEach((cell) => {
+      let key = headers[cell.column];
+      let value = cell.value;
+      data.push({ key, value });
+    });
+    console.log(data)
+    data = groupBy(data, 'key');
+    console.log(data, '11')
+
+    for (let key of Object.keys(data)) {
+      data[key] = data[key].map((k) => k.value);
+    }
+    return data;
+  });
+  rows = compact(rows);
+  // console.log(JSON.stringify(rows, null, 2));
+  return rows;
+}
 
 const Page = () => {
   const [list, setList] = useState<any[]>([]);
@@ -106,14 +169,40 @@ const Page = () => {
     })();
   }, []);
 
+  const getDataFromXlsx = async () => {
+    const workbookFile = './test.xlsx';
+    const nameOfSheet = 'ws-test1';
+
+    let workbook = new excel.Workbook();
+    await workbook.xlsx.readFile(workbookFile);
+    const sheet = workbook.getWorksheet(nameOfSheet);
+    let json = sheetToJson(sheet, { headerRowNumber: 2 });
+    console.log(json);
+  };
+
+  const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.files[0], 'filefile');
+
+    const buffer = await fileToBuffer(e.target.files[0]);
+
+    let workbook = new excel.Workbook();
+    await workbook.xlsx.load(buffer);
+
+    const sheet = workbook.getWorksheet(1);
+
+    let json = sheetToJson({sheet});
+    console.log(json);
+  };
+
   return (
     <div>
       singers
-      <input type='file' id='files' name='file' />
+      <input type='file' id='files' name='file' onChange={onChange} />
       <button onClick={() => readBlob()}>entire file</button>
       <div id='crypto_sha256'></div>
       {list.length > 0 ? list[0].name : ''}
-      <div onClick={() => generateFile(workbook)}>generate</div>
+      {/* <div onClick={() => generateFile(workbook)}>generate</div> */}
+      <div onClick={getDataFromXlsx}>generate</div>
     </div>
   );
 };

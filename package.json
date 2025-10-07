@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "env-cmd -f .env.play next dev",
+    "dev1": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -15,6 +16,7 @@
     "@dnd-kit/modifiers": "^7.0.0",
     "@dnd-kit/sortable": "^8.0.0",
     "@faker-js/faker": "^9.3.0",
+    "@hello-pangea/dnd": "^18.0.1",
     "@heroicons/react": "^2.1.5",
     "@iconify/json": "^2.2.273",
     "@iconify/tailwind": "^1.1.3",
