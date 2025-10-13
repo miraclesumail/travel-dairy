@@ -1,0 +1,63 @@
+.accordion {
+  width: 320px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+/* 每个面板一个块 */
+.item {
+  border-bottom: 1px solid #ddd;
+}
+
+/* 隐藏 checkbox */
+.item input {
+  display: none;
+}
+
+/* header 样式 */
+.header {
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  height: 50px;
+  box-sizing: border-box;
+}
+
+.label {
+  height: 50px;
+  line-height: 50px;
+  display: block;
+}
+/* 小箭头 */
+.label::after {
+  content: '▼';
+  position: absolute;
+  right: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* 内容区 */
+.content {
+  display: grid;
+  transition: grid-template-rows .4s ease;
+  grid-template-rows: 0fr;
+  background: #f9f9f9;
+}
+
+.content div {
+  overflow: hidden;
+}
+
+/* 当 checked 时展开内容 */
+.item input:checked + .header .label::after {
+  transform: rotate(180deg);
+}
+
+/* 关键动画：行高从 0 → 1fr */
+.item input:checked ~ .content {
+  grid-template-rows: 1fr;
+}

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>边框依次变蓝动画（循环版）</title>
+<style>
+  :root{
+    --border-thickness: 4px;
+    --border-color: #1e90ff; /* 蓝色 */
+    --side-duration: 4s;     /* 每侧动画时长 */
+  }
+
+  body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f5f7fb;
+    margin:0;
+    font-family:system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+
+  .box {
+    position: relative;
+    width: 320px;
+    height: 200px;
+    background: white;
+    box-shadow: 0 8px 30px rgba(20,30,60,0.08);
+    overflow: visible;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .side {
+    position: absolute;
+    background: var(--border-color);
+    pointer-events: none;
+  }
+
+  .side.top {
+    top: 0;
+    left: 0;
+    height: var(--border-thickness);
+    width: 100%;
+    transform-origin: left center;
+    animation: growX var(--side-duration) linear infinite backwards;
+    animation-delay: 0s;
+  }
+
+  .side.right {
+    top: 0;
+    right: 0;
+    width: var(--border-thickness);
+    height: 100%;
+    transform-origin: top center;
+    animation: growY var(--side-duration) linear infinite backwards;
+    /* animation-delay: 1s; */
+  }
+
+  .side.bottom {
+    bottom: 0;
+    left: 0;
+    height: var(--border-thickness);
+    width: 100%;
+    transform-origin: right center;
+    animation: growX1 var(--side-duration) linear infinite backwards;
+  }
+
+  .side.left {
+    top: 0;
+    left: 0;
+    width: var(--border-thickness);
+    height: 100%;
+    transform-origin: bottom center;
+    animation: growY1 var(--side-duration) linear infinite backwards;
+  }
+
+  @keyframes growX {
+    0% { transform: scaleX(0); opacity: 0; }
+    25% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+
+  @keyframes growY {
+    0%{ transform: scaleY(0); opacity: 0; }
+    25% { transform: scaleY(0); opacity: 0; }
+    50% { transform: scaleY(1); opacity: 1; }
+    100% { transform: scaleY(1); opacity: 1; }
+  }
+
+  @keyframes growX1 {
+    0% { transform: scaleX(0); opacity: 0; }
+    50% { transform: scaleX(0); opacity: 0; }
+    75% { transform: scaleX(1); opacity: 1; }
+    100% { transform: scaleX(1); opacity: 1; }
+  }
+
+  @keyframes growY1 {
+    0%{ transform: scaleY(0); opacity: 0; }
+    75% { transform: scaleY(0); opacity: 0; }
+    95% { transform: scaleY(1); opacity: 1; }
+    100% { transform: scaleY(1); opacity: 1; }
+  }
+
+  .box .content {
+    padding: 12px;
+    text-align:center;
+    color:#223;
+  }
+</style>
+</head>
+<body>
+
+<div class="box">
+  <div class="side top"></div>
+  <div class="side right"></div>
+  <div class="side bottom"></div>
+  <div class="side left"></div> 
+  <!-- <div class="side right"></div>
+  <div class="side bottom"></div>
+  <div class="side left"></div> -->
+
+  <div class="content">
+    <h3>循环动画示例</h3>
+    <p>边框依次从上→右→下→左方向变蓝，每边 2s，无限循环。</p>
+  </div>
+</div>
+
+</body>
+</html>

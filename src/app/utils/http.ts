@@ -47,7 +47,7 @@ const ev = new EventEmitter();
 instance.interceptors.request.use(
   async (config: InternalAxiosRequestConfig & Record<string, any>) => {
     const reqKey = generateReqKey(config);
-
+    
     if (pendingRequest.has(reqKey)) {
       let res = null;
 
