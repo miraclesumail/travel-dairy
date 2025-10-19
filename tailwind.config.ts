@@ -2,14 +2,13 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-07-02 16:10:47
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2025-10-07 22:54:43
+ * @LastEditTime: 2025-10-17 03:47:32
  * @FilePath: /nextjs/travel-dairy/tailwind.config.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 import type { Config } from 'tailwindcss';
 import { addIconSelectors, addDynamicIconSelectors } from '@iconify/tailwind';
 import iconJson from './src/icon/output/icon.json'
-
 import {nextui} from "@nextui-org/react";
 
 

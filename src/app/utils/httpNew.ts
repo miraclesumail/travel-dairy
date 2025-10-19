@@ -68,7 +68,8 @@ const clearPending = () => {
 };
 
 const service = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
+  // baseURL: 'https://jsonplaceholder.typicode.com',
+  baseURL: 'http://localhost:4000',
   timeout: 10000,
 });
 
@@ -90,7 +91,7 @@ service.interceptors.response.use(
   (response) => {
     removePending(response.config);
     stopLoading();
-    console.log(response.config, 'responseresponse');
+    console.log(response);
     return response.data;
   },
   async (error) => {
