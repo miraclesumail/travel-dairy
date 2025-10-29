@@ -72,6 +72,12 @@ export default function App() {
       setRooms(list);
     });
 
+    s.on('refresh_token', (refreshToken) => {
+      console.log('need to refresh_token now', refreshToken);
+      localStorage.setItem('token', refreshToken);
+      setToken(refreshToken);
+    });
+
     s.on('users_inRoom', (usersInRoom: any) => {
       console.log(usersInRoom, 'ssssss');
       setUsersInRoom(usersInRoom);
@@ -105,6 +111,7 @@ export default function App() {
       s.off('disconnect');
       s.off('room_list');
       s.off('users_inRoom');
+      s.off('refresh_token');
       s.off('message');
       s.off('connect_error');
       // don't close socket here to allow hot-reload dev UX; close if desired
