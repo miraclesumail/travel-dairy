@@ -1,0 +1,46 @@
+
+
+/* 整个通讯录的容器 */
+.contacts-list {
+    height: 100vh; /* 撑满视口高度，以实现滚动 */
+    overflow-y: auto; /* 允许垂直滚动 */
+    padding: 0 16px;
+}
+
+/* 按姓氏分组的容器 */
+.contacts-group {
+    /* 
+    position: sticky 的效果范围为其最近的具有滚动机制的祖先元素。
+    在这里是 .contacts-list，因此每个分组的头部只会粘在这个容器内。
+    */
+}
+
+/* 固定头部的样式 */
+.group-header {
+    position: sticky; /* 关键属性 */
+    top: 0; /* 当滚动到视口顶部时固定 */
+    background-color: #e0e0e0;
+    padding: 8px 0;
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    z-index: 10; /* 确保它在滚动时位于联系人列表上方 */
+}
+
+/* 联系人列表和单个联系人样式 */
+.contact-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-item {
+    padding: 16px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+}
+
+/* 最后一个联系人去除底部边框 */
+.contact-item:last-child {
+    border-bottom: none;
+}

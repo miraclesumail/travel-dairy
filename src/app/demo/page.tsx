@@ -2,11 +2,17 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-11-04 22:53:22
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2024-11-15 21:19:19
+ * @LastEditTime: 2025-11-02 20:06:14
  * @FilePath: /travel-dairy/src/app/demo/page.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
+'use client';
 import { Button } from '@/components/ui/button';
+import a, { bb, MyPackageExports, FN } from '@miracle_sumail/my-antd';
+import b from '@miracle_sumail/my-antd/es';
+import c from '@miracle_sumail/my-antd/lib';
+import { Select, Option, Option2 } from '@miracle_sumail/test-demo';
+import { showDemo } from '@/app/utils/ui/showModal';
 import styles from './style.module.scss';
 
 // export type User = { roles: Role[]; id: string }
@@ -41,9 +47,23 @@ import styles from './style.module.scss';
 // hasPermission(user, "view:comments")
 
 const Page = () => {
+  const options: Option[] = [
+    // Use the exported Option type
+    { value: 'frontend', label: 'Frontend' },
+    { value: 'backend', label: 'Backend' },
+  ];
+
+  console.log(a.alert(), 'cnmdmdmd');
+  console.log(a.anchor(), 'cnmdmdmd');
+  console.log(b.test(), 'hahahah111');
+  console.log(c.test(), 'hahahah222');
+
   return (
     <div>
-      <Button variant={'default'} variantType={'axiba'}>Click me</Button>
+      <Button variant={'default'} variantType={'axiba'}>
+        Click me
+      </Button>
+      <Select options={options} placeholder='Choose a role' onChange={(val) => alert(`You selected: ${val}`)} />
       {/* <svg xmlns='http://www.w3.org/2000/svg' viewBox='-5 -4.064 38 38'>
         <path
           className={styles.path}
@@ -70,46 +90,46 @@ const Page = () => {
 export default Page;
 
 type Comment = {
-  id: string
-  body: string
-  authorId: string
-  createdAt: Date
-}
+  id: string;
+  body: string;
+  authorId: string;
+  createdAt: Date;
+};
 
 type Todo = {
-  id: string
-  title: string
-  userId: string
-  completed: boolean
-  invitedUsers: string[]
-}
+  id: string;
+  title: string;
+  userId: string;
+  completed: boolean;
+  invitedUsers: string[];
+};
 
-type Role = "admin" | "moderator" | "user"
-type User = { blockedBy: string[]; roles: Role[]; id: string }
+type Role = 'admin' | 'moderator' | 'user';
+type User = { blockedBy: string[]; roles: Role[]; id: string };
 
 type PermissionCheck<Key extends keyof Permissions> =
   | boolean
-  | ((user: User, data: Permissions[Key]["dataType"]) => boolean)
+  | ((user: User, data: Permissions[Key]['dataType']) => boolean);
 
 type RolesWithPermissions = {
   [R in Role]: Partial<{
     [Key in keyof Permissions]: Partial<{
-      [Action in Permissions[Key]["action"]]: PermissionCheck<Key>
-    }>
-  }>
-}
+      [Action in Permissions[Key]['action']]: PermissionCheck<Key>;
+    }>;
+  }>;
+};
 
 type Permissions = {
   comments: {
-    dataType: Comment
-    action: "view" | "create" | "update"
-  }
+    dataType: Comment;
+    action: 'view' | 'create' | 'update';
+  };
   todos: {
     // Can do something like Pick<Todo, "userId"> to get just the rows you use
-    dataType: Todo
-    action: "view" | "create" | "update" | "delete"
-  }
-}
+    dataType: Todo;
+    action: 'view' | 'create' | 'update' | 'delete';
+  };
+};
 
 const ROLES = {
   admin: {
@@ -147,45 +167,42 @@ const ROLES = {
     todos: {
       view: (user, todo) => !user.blockedBy.includes(todo.userId),
       create: true,
-      update: (user, todo) =>
-        todo.userId === user.id || todo.invitedUsers.includes(user.id),
-      delete: (user, todo) =>
-        (todo.userId === user.id || todo.invitedUsers.includes(user.id)) &&
-        todo.completed,
+      update: (user, todo) => todo.userId === user.id || todo.invitedUsers.includes(user.id),
+      delete: (user, todo) => (todo.userId === user.id || todo.invitedUsers.includes(user.id)) && todo.completed,
     },
   },
-} as const satisfies RolesWithPermissions
+} as const satisfies RolesWithPermissions;
 
 export function hasPermission<Resource extends keyof Permissions>(
   user: User,
   resource: Resource,
-  action: Permissions[Resource]["action"],
-  data?: Permissions[Resource]["dataType"]
+  action: Permissions[Resource]['action'],
+  data?: Permissions[Resource]['dataType']
 ) {
-  return user.roles.some(role => {
-    const permission = (ROLES as RolesWithPermissions)[role][resource]?.[action]
-    if (permission == null) return false
+  return user.roles.some((role) => {
+    const permission = (ROLES as RolesWithPermissions)[role][resource]?.[action];
+    if (permission == null) return false;
 
-    if (typeof permission === "boolean") return permission
-    return data != null && permission(user, data)
-  })
+    if (typeof permission === 'boolean') return permission;
+    return data != null && permission(user, data);
+  });
 }
 
 // USAGE:
-const user: User = { blockedBy: ["2"], id: "1", roles: ["user"] }
+const user: User = { blockedBy: ['2'], id: '1', roles: ['user'] };
 const todo: Todo = {
   completed: false,
-  id: "3",
+  id: '3',
   invitedUsers: [],
-  title: "Test Todo",
-  userId: "1",
-}
+  title: 'Test Todo',
+  userId: '1',
+};
 
 // Can create a comment
-hasPermission(user, "comments", "create")
+hasPermission(user, 'comments', 'create');
 
 // Can view the `todo` Todo
-hasPermission(user, "todos", "view", todo)
+hasPermission(user, 'todos', 'view', todo);
 
 // Can view all todos
-hasPermission(user, "todos", "view")
+hasPermission(user, 'todos', 'view');

@@ -595,6 +595,18 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@miracle_sumail/my-antd@^1.0.26":
+  version "1.0.26"
+  resolved "https://registry.yarnpkg.com/@miracle_sumail/my-antd/-/my-antd-1.0.26.tgz#d8c421eddf04dc86d520eac03e1d28006e2b1d7b"
+  integrity sha512-qQI53GMUz3qOHTJ61o7MpjhmraKPMBqxwc2OE69jLRjUNagimKNMbyLAUmGWT3CNo3YntTjw+9M/l/EWP/lQJQ==
+
+"@miracle_sumail/test-demo@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@miracle_sumail/test-demo/-/test-demo-1.0.5.tgz#098c4113e15012f73e70228986caa7345e4c2ce8"
+  integrity sha512-CR+TNh4O35ffvz52jQspHj5Hd26ArdToA3X5UBFOkZbG22tbkpUI4knW3hevoe/donMW6GuN2R4HC9ptuVhyWg==
+  dependencies:
+    react "^19.2.0"
+
 "@napi-rs/wasm-runtime@^0.2.11":
   version "0.2.12"
   resolved "https://registry.yarnpkg.com/@napi-rs/wasm-runtime/-/wasm-runtime-0.2.12.tgz#3e78a8b96e6c33a6c517e1894efbd5385a7cb6f2"
@@ -6136,6 +6148,11 @@ lucide-react@^0.441.0:
   resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.441.0.tgz#afc0d76c5ffb5bdac7adf0c9626217a5451b1af1"
   integrity sha512-0vfExYtvSDhkC2lqg0zYVW1Uu9GsI4knuV9GP9by5z0Xhc4Zi5RejTxfz9LsjRmCyWVzHCJvxGKZWcRyvQCWVg==
 
+lunar-typescript@^1.8.5:
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/lunar-typescript/-/lunar-typescript-1.8.5.tgz#ae0f4e44d82adb093cca53c1073230a4d87fddfb"
+  integrity sha512-8/3lpQWiXlQg7f9r5v1VJVdasGIxXLXma9mm7MKHVhjNtZT8YS5pf1El0SfsQ75pHLpPu7V3cH7yG5T5WzqnAQ==
+
 math-intrinsics@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/math-intrinsics/-/math-intrinsics-1.1.0.tgz#a0dd74be81e2aa5c2f27e65ce283605ee4e2b7f9"
@@ -6892,6 +6909,11 @@ react@^18:
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
   dependencies:
     loose-envify "^1.1.0"
+
+react@^19.2.0:
+  version "19.2.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.2.0.tgz#d33dd1721698f4376ae57a54098cb47fc75d93a5"
+  integrity sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==
 
 read-cache@^1.0.0:
   version "1.0.0"
