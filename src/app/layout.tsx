@@ -2,7 +2,7 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-07-02 16:10:47
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2025-10-17 03:48:07
+ * @LastEditTime: 2025-11-11 20:06:06
  * @FilePath: /nextjs/travel-dairy/src/app/layout.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%
  */
@@ -21,6 +21,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { usePathname } from 'next/navigation';
 import './globals.css';
 import { useEffect, useState } from 'react';
+import { initTracker } from '@/app/utils/tracker';
+import usePageStay from '@/hooks/usePageStay';
 
 const inter = Inter({ subsets: ['latin'] });
 const aleo = Aleo({ subsets: ['vietnamese'] });
@@ -39,6 +41,7 @@ const roboto = Roboto({
 //   }
 // };
 
+
 export default function RootLayout({
   children,
   sidemenu,
@@ -51,13 +54,16 @@ export default function RootLayout({
   const segment = useSelectedLayoutSegment();
   const navSegment = useSelectedLayoutSegment('sidemenu');
   const pathname = usePathname();
-
+  usePageStay();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
+    initTracker({ reportUrl: '/api/track', userId: '888' });
+
     console.log('layout');
   }, []);
+
   return (
     <html lang='en'>
       <body className={aleo.className}>

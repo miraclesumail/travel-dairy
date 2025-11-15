@@ -4,6 +4,8 @@ import dayjs from 'dayjs';
 import { Infinite } from '../infiniteScroll/page';
 import './style.scss';
 import { MutableRefObject, UIEventHandler, useEffect, useRef, useState } from 'react';
+import { initTracker, track } from '@/app/utils/tracker';
+import { useRouter } from 'next/navigation';
 
 const headerTitle = ['日', '一', '二', '三', '四', '五', '六'];
 
@@ -50,18 +52,33 @@ export default function Page() {
 
   console.log(generateDateList1(42 * 8), 'generateDateList1generateDateList1');
 
-  function showHeaderTitle(scrollTop: number) {
-    const firstDateList = dateList.filter(isFirstDayOfMonth);
-    const toTops = [];
-    for (const date of firstDateList) {
-      const offsetTop = (document.querySelector(`#date-cell-${date}`) as HTMLElement).offsetTop;
-      const toTop = Math.abs(offsetTop - scrollTop);
-      toTops.push(toTop);
-    }
+  const router = useRouter();
 
-    const minTop = Math.min(...toTops);
-    const index = toTops.lastIndexOf(minTop);
-    return dayjs(new Date(firstDateList[index])).format('YYYY-MM');
+
+  function onScrollCb(top: number) {}
+
+  function showHeaderTitle(start: number) {
+    const showlist = dateList.slice(start).flat();
+    const firstDate = showlist.filter(isFirstDayOfMonth)[0];
+
+    // console.log(firstDateList, 'firstDateListfirstDateList');
+    // for (const date of firstDateList) {
+    //   if (!document.querySelector(`#date-cell-${date}`)) continue;
+    //   const offsetTop = (document.querySelector(`#date-cell-${date}`) as HTMLElement).offsetTop;
+    //   toTops.push((document.querySelector(`#date-cell-${date}`) as HTMLElement).parentElement?.offsetTop);
+    //   console.log(document.querySelector(`#date-cell-${date}`));
+    // }
+
+    console.log(firstDate);
+    console.log(showlist);
+    const row = Math.floor(showlist.indexOf(firstDate) / 7);
+    console.log(row, 'rowrowrow');
+
+    if (row <= 2) setHeadTitle(dayjs(new Date(firstDate)).format('YYYY-MM'));
+    // console.log(toTops, 'toTops1toTops1')
+    // const minTop = Math.min(...toTops);
+    // const index = toTops.lastIndexOf(minTop);
+    // setHeadTitle(dayjs(new Date(firstDateList[index])).format('YYYY-MM'));
   }
 
   /**
@@ -93,7 +110,7 @@ export default function Page() {
     const total = [...data1, ...data];
     console.log(data1, 'hhhh');
 
-    return Array.from({ length: count*2 / 7 }).map((_, index) => total.slice(index * 7, (index + 1) * 7));
+    return Array.from({ length: (count * 2) / 7 }).map((_, index) => total.slice(index * 7, (index + 1) * 7));
   }
 
   function isFirstDayOfMonth(date: string): boolean {
@@ -116,6 +133,8 @@ export default function Page() {
     ];
   }
 
+  const handleBuy = () => track('buy', { aa: 88 });
+
   function renderer(data: any[]) {
     return (
       <div className='content relative'>
@@ -124,6 +143,7 @@ export default function Page() {
             key={index}
             className={`date-cell ${isWeekend(date) ? 'bg-[#f5f5f5] text-[#c3c3c3]' : ''}`}
             id={`date-cell-${date}`}
+            onClick={handleBuy}
           >
             <div className='w-full flex justify-between px-1'>
               <span>{formatContent(date)[0]}</span>
@@ -160,7 +180,7 @@ export default function Page() {
 
   return (
     <div className='container'>
-      <div>
+      <div onClick={() => router.push('/demo')}>
         {headTitle} {count}
       </div>
       <header>
@@ -172,6 +192,7 @@ export default function Page() {
       <Infinite<string[]>
         data={dateList}
         lineHeight={80}
+        onScrollCb={showHeaderTitle}
         renderer={renderer}
         containerStyle={{ height: '480px', overflow: 'auto', position: 'relative' }}
       />

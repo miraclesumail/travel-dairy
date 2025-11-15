@@ -2,7 +2,7 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-11-04 22:53:22
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2025-11-02 20:06:14
+ * @LastEditTime: 2025-11-11 21:00:53
  * @FilePath: /travel-dairy/src/app/demo/page.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -14,7 +14,8 @@ import c from '@miracle_sumail/my-antd/lib';
 import { Select, Option, Option2 } from '@miracle_sumail/test-demo';
 import { showDemo } from '@/app/utils/ui/showModal';
 import styles from './style.module.scss';
-
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 // export type User = { roles: Role[]; id: string }
 
 // type Role = keyof typeof ROLES
@@ -53,6 +54,18 @@ const Page = () => {
     { value: 'backend', label: 'Backend' },
   ];
 
+  const router = useRouter();
+  // useEffect(() => {
+  //    return () => {
+  //     track(TrackType.PAGE_STAY, {
+  //       url: 'pathname',
+  //       duration: 999,
+  //       userId: '888',
+  //       time: '2022-11-11',
+  //     });
+  //    }
+  // }, [])
+
   console.log(a.alert(), 'cnmdmdmd');
   console.log(a.anchor(), 'cnmdmdmd');
   console.log(b.test(), 'hahahah111');
@@ -60,7 +73,7 @@ const Page = () => {
 
   return (
     <div>
-      <Button variant={'default'} variantType={'axiba'}>
+      <Button variant={'default'} variantType={'axiba'} onClick={() => router.push('/calendar')}>
         Click me
       </Button>
       <Select options={options} placeholder='Choose a role' onChange={(val) => alert(`You selected: ${val}`)} />
@@ -73,6 +86,14 @@ const Page = () => {
           fill='none'
         />
       </svg> */}
+
+      <button data-track='comment' data-content={`${JSON.stringify({ description: 'this is a' })}`}>
+        comment
+      </button>
+
+      <button data-track='checkout' data-content={`${JSON.stringify({ productId: 'dhhdgf88', quantity: 8 })}`}>
+        checkout
+      </button>
 
       <svg viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg' width={800} height={800}>
         <path

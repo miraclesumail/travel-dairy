@@ -2,7 +2,7 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2025-01-19 00:18:27
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2025-11-05 23:05:53
+ * @LastEditTime: 2025-11-08 19:21:04
  * @FilePath: /travel-dairy/src/app/infiniteScroll/demo.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -18,11 +18,12 @@ type Props<T> = {
   lineHeight: number;
   data: T[];
   containerStyle?: CSSProperties;
+  onScrollCb: (start: number) => void;
   renderer: (item: T) => React.ReactElement;
 };
 
 export function Infinite<T>(props: Props<T>) {
-  const { lineHeight, data, containerStyle = {}, renderer } = props;
+  const { lineHeight, data, containerStyle = {}, renderer, onScrollCb } = props;
 
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(0);
@@ -34,7 +35,12 @@ export function Infinite<T>(props: Props<T>) {
 
   // 生命周期钩子
   useEffect(() => {
+    onScrollCb(0);
     setEnd(start + Math.ceil(listRef.current.clientHeight / lineHeight) + 1);
+    // (listRef.current as HTMLElement).scrollTo(0, 480)
+    // setTimeout(() => {
+    //    (listRef.current as HTMLElement).scrollTo(0, 100)
+    // }, 1000)
   }, []);
 
   const onScroll = () => {
@@ -42,6 +48,10 @@ export function Infinite<T>(props: Props<T>) {
     setStart(Math.floor(scrollTop / lineHeight));
     setEnd(Math.floor(scrollTop / lineHeight) + Math.ceil(listRef.current.clientHeight / lineHeight) + 1);
     setOffset(scrollTop - (scrollTop % lineHeight));
+
+    if (Math.floor(scrollTop / lineHeight) != start) {
+      onScrollCb(Math.floor(scrollTop / lineHeight));
+    }
   };
 
   return (
