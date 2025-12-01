@@ -2,14 +2,14 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2025-11-25 19:08:06
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2025-11-26 08:51:59
+ * @LastEditTime: 2025-12-01 21:06:05
  * @FilePath: /travel-dairy/src/app/anime-demos/page.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 'use client';
-import { animate } from 'animejs/animation';
-import { stagger, set } from 'animejs/utils';
-import { createTimeline } from 'animejs/timeline';
+import { animate } from 'animejs';
+import { stagger, set } from 'animejs';
+import { createTimeline } from 'animejs';
 import { useEffect } from 'react';
 import Animatable from './animatable'
 

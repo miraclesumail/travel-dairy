@@ -1,5 +1,5 @@
-import { createAnimatable } from 'animejs/animatable';
-import { clamp } from 'animejs/utils';
+import { createAnimatable } from 'animejs';
+import { clamp } from 'animejs';
 import { useEffect } from 'react';
 
 export default function Animateble() {
