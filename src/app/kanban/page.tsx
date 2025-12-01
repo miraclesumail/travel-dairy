@@ -2,7 +2,7 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-10-22 01:24:43
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2024-10-22 21:25:54
+ * @LastEditTime: 2025-12-01 21:33:20
  * @FilePath: /travel-dairy/src/app/kanban/page.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -100,7 +100,7 @@ const initTasks: Record<Category, Task[]> = {
   ],
 };
 
-const index = () => {
+const Index = () => {
   const [columnsData, setColumnsData] = useState<Record<Category, Task[]>>(initTasks);
 
   const categorys = [Category.ToDo, Category.ForReview, Category.InProgress, Category.Done];
@@ -218,4 +218,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Index;

@@ -2,7 +2,7 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-11-04 22:53:22
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2025-11-11 21:00:53
+ * @LastEditTime: 2025-12-01 21:34:51
  * @FilePath: /travel-dairy/src/app/demo/page.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -194,7 +194,7 @@ const ROLES = {
   },
 } as const satisfies RolesWithPermissions;
 
-export function hasPermission<Resource extends keyof Permissions>(
+function hasPermission<Resource extends keyof Permissions>(
   user: User,
   resource: Resource,
   action: Permissions[Resource]['action'],
@@ -227,3 +227,5 @@ hasPermission(user, 'todos', 'view', todo);
 
 // Can view all todos
 hasPermission(user, 'todos', 'view');
+
+

@@ -1,7 +1,7 @@
 'use client';
 import { Lunar, Solar } from 'lunar-typescript';
 import dayjs from 'dayjs';
-import { Infinite } from '../infiniteScroll/page';
+import Infinite from '../infiniteScroll/page3';
 import './style.scss';
 import { MutableRefObject, UIEventHandler, useEffect, useRef, useState } from 'react';
 import { initTracker, track } from '@/app/utils/tracker';
@@ -53,7 +53,6 @@ export default function Page() {
   console.log(generateDateList1(42 * 8), 'generateDateList1generateDateList1');
 
   const router = useRouter();
-
 
   function onScrollCb(top: number) {}
 
@@ -135,7 +134,7 @@ export default function Page() {
 
   const handleBuy = () => track('buy', { aa: 88 });
 
-  function renderer(data: any[]) {
+  function renderer(data: string[]) {
     return (
       <div className='content relative'>
         {data.map((date, index) => (
@@ -189,7 +188,7 @@ export default function Page() {
         ))}
       </header>
 
-      <Infinite<string[]>
+      <Infinite
         data={dateList}
         lineHeight={80}
         onScrollCb={showHeaderTitle}

@@ -2,7 +2,7 @@
  * @Author: sumail sumail@xyzzdev.com
  * @Date: 2024-11-18 22:48:20
  * @LastEditors: sumail sumail@xyzzdev.com
- * @LastEditTime: 2024-11-18 22:59:31
+ * @LastEditTime: 2025-12-01 22:02:19
  * @FilePath: /travel-dairy/src/i18n/index.ts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -30,7 +30,8 @@ i18next
 
 export function useT(ns?: Namespace) {
   const params = useParams();
-  const lang = 'zh-CN' || String(params?.lang);
+  const lang = 'zh-CN' 
+  // || String(params?.lang);
   console.log(lang, '0----');
   if (i18next.resolvedLanguage !== lang) i18next.changeLanguage(lang);
 

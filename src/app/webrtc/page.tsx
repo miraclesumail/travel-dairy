@@ -27,7 +27,7 @@ interface VideoChatProps {
   roomId: string;
 }
 
-export const VideoChat: React.FC<VideoChatProps> = ({ roomId }) => {
+const VideoChat: React.FC<VideoChatProps> = ({ roomId }) => {
   const {
     localStream,
     remoteStreams,
