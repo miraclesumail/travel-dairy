@@ -15,7 +15,6 @@ const __dirname = path.dirname(__filename);
 
 const nextConfig = {
   reactStrictMode: false,
- output: 'export', // 关键配置：开启静态导出
 
   webpack: (config, options) => {
     console.log(process.env.NEXT_PUBLIC_APPWRITE_DATABASE, 'hahahah');
