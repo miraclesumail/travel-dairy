@@ -187,7 +187,7 @@ export function initTracker(config: TrackerConfig) {
       url: 'ww',
       duration: 10 * 1000,
       userId: 'aaa',
-      time: '2022-10-22',
+      time: '2022-10-12',
     },
   };
   if (!trackInstance) {
