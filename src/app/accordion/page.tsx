@@ -10,7 +10,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Accordion, { type AccordionProps, type AccordionItemProps } from './accordion';
-import Demo from '@theme/demo';
 
 import './style.scss';
 
@@ -20,7 +19,6 @@ const dataList: Partial<AccordionItemProps>[] = [
     open: true,
     children: (
       <>
-        <Demo />
         <p>这里是面板一的内容。</p>
         <p>支持多行文字，展开高度自动适应。</p>
       </>
